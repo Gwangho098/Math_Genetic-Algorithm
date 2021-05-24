@@ -1,13 +1,13 @@
 package gene;
 
 import java.util.Scanner;
-
+import java.util.Arrays;
 public class gene {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
-		System.out.print("# Generations : ");
+		System.out.print("Generations : ");
 		int generations = input.nextInt();
 		double num = 0, temp = 0;
 		
@@ -27,13 +27,15 @@ public class gene {
 		    Superior(top4, g_f);
 		    
 		    for(int i = 0; i < 100; i++) {
-		    	g_f[i][0] = (top4[(int)(Math.random()*20)] + top4[(int)(Math.random()*20)]) / 2 + Math.random()/1000000 - 0.00000005;//상위 4개의 유전자 중 임의의 2개의 유전자를 후대 유전자에 물려줌, "Math.random() - 0.5"는 변이를 나타냄 	    			 
+		    	g_f[i][0] = (top4[(int)(Math.random()*20)] + top4[(int)(Math.random()*20)]) / 2 + Math.random()*0.000001 - 0.0000005;//상위 4개의 유전자 중 임의의 2개의 유전자를 후대 유전자에 물려줌, "Math.random() - 0.5"는 변이를 나타냄 	    	
+		
 		    }
 	    }
 	    
-	    for(int i = 0; i < 100; i++) {																							
-	    	System.out.print("[" + g_f[i][0] + ", " + g_f[i][1] + "]");
-	    } 
+	    for(int i = 0; i < 100; i++) {
+	    	System.out.print("[" + g_f[i][0] +", "+ g_f[i][1] + "]");
+	    }
+	    
 	}
 	public static void BubbleSort(double [][] arr) {
 		double temp = 0;
@@ -52,6 +54,7 @@ public class gene {
 	    }
 	}
 	public static void Superior (double [] arr_s, double [][] arr_g) {
+		double temp = 0;
 		for(int i = 0; i < arr_s.length; i++) {
 			arr_s[i] = arr_g[i][0];
 		}
